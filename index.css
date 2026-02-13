@@ -13,6 +13,8 @@
   --radius-md: 12px;
   --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.9);
   --shadow-glow: 0 0 30px rgba(56, 189, 248, 0.3);
+  /* page background (can be swapped for light theme) */
+  --bg-gradient: radial-gradient(circle at top, #1d283a 0, #020617 55%, #000 100%);
 }
 
 * {
@@ -23,10 +25,22 @@
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: radial-gradient(circle at top, #1d283a 0, #020617 55%, #000 100%);
+  background: var(--bg-gradient);
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+/* Light theme overrides (apply by adding class "light-theme" to <body>) */
+body.light-theme {
+  --bg-gradient: radial-gradient(circle at top, #f6f8fb 0, #ffffff 55%, #f8fafc 100%);
+  --text: #0b1220;
+  --muted: #4b5563;
+  --card: #ffffff;
+  --chip-bg: #f3f4f6;
+  --accent: #0ea5e9;
+  --accent-soft: rgba(14, 165, 233, 0.12);
+  color-scheme: light;
 }
 
 .page {
@@ -144,6 +158,24 @@ body {
   font-size: 0.9rem;
   animation: fadeInDown 0.8s ease-out both;
   animation-delay: 0.1s;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  margin-left: 12px;
+  background: transparent;
+  border: 1px solid rgba(55, 65, 81, 0.9);
+  color: var(--text);
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.theme-toggle:hover {
+  color: var(--accent);
+  border-color: rgba(56, 189, 248, 0.9);
+  box-shadow: 0 6px 18px rgba(56, 189, 248, 0.08);
 }
 
 .nav-link {
@@ -430,9 +462,8 @@ body {
 }
 
 .section-number {
-  color: var(--accent);
-  font-weight: 700;
-  font-size: 0.9rem;
+  /* hide numeric prefixes beside topics per user request */
+  display: none;
 }
 
 .section-accent {
@@ -951,6 +982,44 @@ footer {
   color: var(--muted);
   text-align: center;
   border-top: 1px solid rgba(31, 41, 55, 0.5);
+}
+
+.footer-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 12px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-brand {
+  font-weight: 600;
+}
+
+.footer-contacts {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer-contacts a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.footer-contacts .sep {
+  color: var(--muted);
+  margin: 0 6px;
+}
+
+.footer-note {
+  color: var(--muted);
+  font-size: 0.85rem;
 }
 
 /* Animations */

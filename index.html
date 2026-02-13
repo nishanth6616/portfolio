@@ -15,7 +15,7 @@
             <div class="avatar-ring"></div>
             <!-- Profile photo (SVG fallback included in assets) -->
             <img
-              src="assets/profile.jpg"
+              src="assets/profile.svg"
               alt="Portrait of Nelli Nishanth Venkat Prabhash"
               class="avatar-img"
             />
@@ -37,6 +37,8 @@
           <a href="#achievements" class="nav-link">Achievements</a>
           <a href="#contact" class="nav-link">Contact</a>
         </nav>
+        <!-- Theme toggle -->
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">🌙</button>
       </div>
     </header>
 
@@ -345,7 +347,7 @@
     <!-- Section Divider -->
     <div class="section-divider"></div>
 
-    <!-- Contact Section -->
+    <!-- Restored Contact Section (Google Sheets form + contact card) -->
     <section id="contact" class="content-section section">
       <div class="section-container">
         <div class="section-header">
@@ -443,8 +445,22 @@
       </div>
     </section>
 
-    <footer>
-      © <span id="year"></span> Nelli Nishanth Venkat Prabhash · Built with HTML &amp; CSS
+    <footer id="contact-info">
+      <div class="footer-inner">
+        <div class="footer-brand">© <span id="year"></span> Nelli Nishanth Venkat Prabhash</div>
+
+        <div class="footer-contacts">
+          <a href="mailto:nishanth6616@gmail.com">nishanth6616@gmail.com</a>
+          <span class="sep">·</span>
+          <a href="tel:+919100385335">+91 9100385335</a>
+          <span class="sep">·</span>
+          <a href="https://www.linkedin.com/in/nishanth-prabhas-230078230" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <span class="sep">·</span>
+          <a href="https://www.hackerrank.com/dashboard" target="_blank" rel="noopener noreferrer">HackerRank</a>
+        </div>
+
+        <div class="footer-note">Built with HTML &amp; CSS</div>
+      </div>
     </footer>
   </div>
 

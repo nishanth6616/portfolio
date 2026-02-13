@@ -175,4 +175,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("scroll", updateActiveNav);
   updateActiveNav(); // Initial call
+
+  // Theme toggle (persists to localStorage)
+  const themeToggle = document.getElementById("theme-toggle");
+  const applyTheme = (theme) => {
+    if (theme === "light") {
+      document.body.classList.add("light-theme");
+      if (themeToggle) {
+        themeToggle.textContent = "☀️";
+        themeToggle.setAttribute("aria-pressed", "true");
+      }
+    } else {
+      document.body.classList.remove("light-theme");
+      if (themeToggle) {
+        themeToggle.textContent = "🌙";
+        themeToggle.setAttribute("aria-pressed", "false");
+      }
+    }
+  };
+
+  // Initialize theme from localStorage or prefers-color-scheme
+  const storedTheme = localStorage.getItem("theme");
+  if (storedTheme) {
+    applyTheme(storedTheme);
+  } else {
+    const prefersLight = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
+    applyTheme(prefersLight ? "light" : "dark");
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const isLight = document.body.classList.contains("light-theme");
+      const next = isLight ? "dark" : "light";
+      applyTheme(next);
+      localStorage.setItem("theme", next);
+    });
+  }
 });
